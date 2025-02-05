@@ -1,6 +1,7 @@
 Flask
-psycopg2-binary
+psycopg2
 python-dotenv
 torch
 ultralytics
 Flask-Cors
+opencv-python
