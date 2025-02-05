@@ -1,13 +1,18 @@
-# Use a Python base image with some basic graphics support
-FROM python:3.12-slim-bullseye
+# Use a Python base image with more dependencies pre-installed
+FROM python:3.12-bullseye
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install system dependencies (important for OpenCV and graphics)
+# Install system dependencies
 RUN apt-get update && \
-    apt-get install -y libgl1-mesa-glx libgl1 libglu1-mesa && \
-    apt-get clean && \
+    apt-get install -y \
+    libgl1-mesa-glx \
+    libgl1 \
+    libglu1-mesa \
+    libpq-dev \
+    gcc \
+    && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file
